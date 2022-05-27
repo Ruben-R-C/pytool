@@ -1,5 +1,3 @@
-
-
 #importar desde ruta principal
 import sys
 from pathlib import Path
@@ -37,7 +35,7 @@ class Buscar:
 		print(" ")
 		self.ruta = input("La ruta del archivo es: ")
 		#BORRAR ->
-		self.ruta='/Users/ruben/desktop/pytool'
+		self.ruta='test'
 		print('')
 		b = buscar.Buscar()
 		elem_recur = b.listar_elementos_carpeta_recursiva(self.ruta)
@@ -80,4 +78,6 @@ class Buscar:
 		x = input('--> ')
 		self.eliminar()
 
-	
+
+#Cambiar extension
+#Cambiar encoding

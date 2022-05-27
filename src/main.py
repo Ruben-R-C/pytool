@@ -2,11 +2,6 @@
 Script para automatizar tareas
 Python_3
 """
-
-
-
-from front.eliminar import Eliminar 
-from front.modificar import Modificar
 from front.buscar import Buscar
 
 class Menu:

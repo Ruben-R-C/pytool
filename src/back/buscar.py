@@ -8,40 +8,6 @@ class Buscar:
 		pass
 
 	# Buscar en path
-	def paraELEMINAR(self, ruta ,tipo=""):
-		print("============================")
-		self.__comprobar(ruta)
-		directorios = []
-		archivos = []
-		for raiz, directorio, archivo in walk(self.ruta):
-			for file in archivo:
-				archivos.append(path.join(raiz, file))
-			for dir in directorio:
-				directorios.append(path.join(raiz, dir))
-		directorios_principales = listdir(self.ruta)
-
-	    #Si no hay mas de 12 archivos/carpetas las muestro
-		if (len(directorios)+len(archivos)) < 13:
-			print("Los directorios son:")
-			for d in directorios:
-				print(d)
-			print("Los archivos son:")
-			for a in archivo:
-				print(a)
-		elif len(directorios_principales) < 10:
-			print("Los archivos en la carpeta principal son:")
-			for f in directorios_principales:
-				print(path.join(raiz, f))
-		print("")
-		print("<<<<<<  RESUMEN >>>>>>")
-		print(f"- Elementos en la carpeta raiz es {len(directorios_principales)}.")
-		print(f"- Total de elementos {(len(directorios)+len(archivos))}")
-		print(f"-        Archivos es {len(archivos)}")
-		print(f"-     Directorios es {len(directorios)}")
-		print("=============================")
-
-
-	# Buscar en path
 	def listar_elementos_carpeta_recursiva(self, ruta):
 		self.__comprobar(ruta)
 		directorios = []
