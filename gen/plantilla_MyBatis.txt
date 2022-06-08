@@ -1,0 +1,22 @@
+=VARIABLE=
+id="updateEquipo" 
+clase="com.etc.model.Equipo"
+
+=TABLA=
+elementos
+columnasSQL,parametrosBean,key
+"RESPOM","usuarioResponsablekey",True
+"CEQUIM","codigoEquipokey",True
+"EQUIPM", 'parametrosBean': "nombreEquipo",False
+"DEQUIM","descripcionEquipo",False
+"FALTAM","fechaAlta",False
+
+=PLANTILLA= 
+	<update id="{{id}}" parameterClass="{{clase}}">
+	UPDATE CPDATD.GPFM041
+	SET
+	{% for elemento in elementos %}{% if not elemento.key %} {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#, {% endif %} 
+	{% endfor %}
+	{% for elemento in elementos %}{% if elemento.key %} WHERE {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#  {% endif %} 
+	{% endfor %}
+	</update>

@@ -32,7 +32,7 @@ python3 -m venv venv
 3. Activar entorno virtual
 ```
 #En windows
-venv\Scripts\activate.bat
+venv\Scripts\activate
 #En Mac y Linux
 source venv/bin/activate
 ```
@@ -60,6 +60,8 @@ pip3 install Jinja2
 6. Ejecutar main.py
 ```
 venv/bin/python src/main.py
+#En windows
+python src/main.py
 ```
 # Configurar entorno de desarrollo 
 
