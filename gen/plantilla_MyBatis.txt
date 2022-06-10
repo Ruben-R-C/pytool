@@ -7,7 +7,7 @@ elementos
 columnasSQL,parametrosBean,key
 "RESPOM","usuarioResponsablekey",True
 "CEQUIM","codigoEquipokey",True
-"EQUIPM", 'parametrosBean': "nombreEquipo",False
+"EQUIPM","nombreEquipo",False
 "DEQUIM","descripcionEquipo",False
 "FALTAM","fechaAlta",False
 

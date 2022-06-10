@@ -1,7 +1,6 @@
-from re import I
-from jinja2 import Template
-import ast
-from pprint import pprint
+from statistics import linear_regression
+from jinja2 import Template # motor de plantillas
+import re # expresiones regulares
 
 class Plantilla:
 	def __init__(self):
@@ -88,27 +87,79 @@ class Plantilla:
 		for linea in lineas:
 		
 			linea = linea.strip()
-			print(linea + " tpo -> "+tpo+"  "+str(idx))
+			
 			if linea == "=VARIABLE=":
+				print(linea)
 				tpo='variable' 
 				idx += 1
 			elif  linea == "=TABLA=":
+				print(linea)
 				tpo='tabla' 
 				idx += 1
+				tbl = 0 
 			elif  linea == "=PLANTILLA=":
+				print(linea)
 				tpo='plantilla' 
 				idx += 1
 			elif  tpo == "variable":
-				pass
-			elif  tpo == "=tabla=":
-				pass
+				if (linea):
+					#Leemos lineas y buscar variables
+					variable = re.search(".*(?=\=)", linea).group()
+					valor = re.search("(?<=\=).*", linea).group()
+					print("variable:  "+variable+"  valor:  "+valor)
+					#Creamos variables globales con cada una de la variables
+					globals()[variable] = valor
+					
+			elif  tpo == "tabla":
+				if (linea):
+					tbl += 1
+					#en la primera linea, leemos el nombre de la tabla
+					if(tbl == 1):
+						tabla = linea
+					#en la segunda linea, leemos el nombre de las columnas
+					if(tbl == 2):
+						columnas = linea.split(",")
+						print(columnas)
+					#leer los datos de la tabla
+					if(tbl >= 3):
+						contenido = linea.split(",")
+						dic = {}
+						for id, col in enumerate(columnas):
+							dic[col] = contenido[id]
+						print(dic)
+						globals()[tabla] = [] #Creamos una variable con el nombre de la tabla que apunta a una lista vacia
 			elif  tpo == "plantilla":
+				#print(linea + " tpo -> "+tpo+"  "+str(idx))
 				pass
+		fichero.close()
+
+
+	def readFile2(self):
+		fichero = open('gen/plantilla_MyBatis.txt', 'r')
+		lineas = fichero.readlines()
+
+		#quitar saltos de linea
+		file = []
+		for i,linea in enumerate(lineas):
+			linea = linea.strip()
+			file.append(linea)
+		print(file)
+
+		#recoremos el archivo
+		lineas = file
+		for li in file:
+
+			#extraer seccion
+			if li == "=VARIABLE=" or li == "=TABLA=" or li == "=PLANTILLA=":
+				print(linea)
+				seccion = linea
 
 
 
 
 		fichero.close()
+
+
 
 
 
@@ -121,13 +172,12 @@ if __name__== "__main__":
 	#print(o)
 
 	a = plan.addMayus("ruta")
-	print(a.mayus())
+	#print(a.mayus())
 
 	b = plan.addMayus({'hola':'casa','adios':'arbol'})
-	print(b['hola'].mayus())
+	#print(b['hola'].mayus())
 
 	c = plan.addMayus([{'hola':'casa','adios':'arbol'},{'hola':'coche','adios':'furgo'}])
-	print(c[1]['adios'].mayus())
+	#print(c[1]['adios'].mayus())
 
-	d = plan.readFile()
-	
+	d = plan.readFile2()
