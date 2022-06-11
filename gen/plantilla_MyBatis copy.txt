@@ -15,7 +15,7 @@ columnasSQL,parametrosBean,key
 	<update id="{{id}}" parameterClass="{{clase}}">
 	UPDATE CPDATD.GPFM041
 	SET
-	{% for elemento in elementos %}{% if elemento.key %} {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#, {% endif %} 
+	{% for elemento in elementos %}{% if not elemento.key %} {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#, {% endif %} 
 	{% endfor %}
 	{% for elemento in elementos %}{% if elemento.key %} WHERE {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#  {% endif %} 
 	{% endfor %}

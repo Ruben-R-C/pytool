@@ -59,6 +59,7 @@ pip3 install Jinja2
 
 6. Ejecutar main.py
 ```
+#En Mac y Linux
 venv/bin/python src/main.py
 #En windows
 python src/main.py
