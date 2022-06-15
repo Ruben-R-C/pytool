@@ -12,12 +12,12 @@ columnasSQL,parametrosBean,key
 "FALTAM","fechaAlta",False
 
 =PLANTILLA= 
-	<update id="{{id}}" parameterClass="{{clase}}">
+	<update id="{{id.mayus()}}" parameterClass="{{clase}}">
 	UPDATE CPDATD.GPFM041
-	SET
-	{% for elemento in elementos %}{% if elemento.key %} {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#, {% endif %} 
-	{% endfor %}
-	{% for elemento in elementos %}{% if elemento.key %} WHERE {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#  {% endif %} 
-	{% endfor %}
-	</update>
+	SET{% for elemento in elementos %}{% if elemento.key %} {{elemento.columnasSQL}}  = #{{elemento.parametrosBean}}#, 
+	{% endif %}{% endfor %}{% for elemento in elementos %}{% if elemento.key %} WHERE {{elemento.columnasSQL}}  = #{{elemento.parametrosBean.mayus()}}#  
+	{% endif %}{% endfor %}{% for elemento in elementos %} XX {{elemento.columnasSQL}} 
+	{% endfor %}</update>
 
+
+=FIN=

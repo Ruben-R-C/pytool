@@ -2,16 +2,22 @@
 Script de escritorio para automatizar tareas reptitivas.
 
 Posible funcionalidades:
-- buscar archivo que comiencen por, que terminen por, que contengan algo y por extension, dentro de zip, ver resumen y arbol 
-- jar zip , buscar libreria de java, ver arbol de jar zip
-- pojo , extraer datos, pasar a excel, mapear excel a bean con plantilla
-- correo automatizar outlook enviar correo, borrador
-- excel automatizar algo
-- buscar codigo muerto en forma de arbol 
-- buscar por tamaño y por encoding
+- buscar archivo (que comiencen por, terminen contengan por tamaño encoding y que tengan la extension)
+- buscar libreria de java (dependencias en uso)
+- ver contenido de archivos compimidos jar ear zip rar ... 
+- extraer los contenidos de las clases
+- correo automatizar outlook (enviar correo, borrador)
+- automatizar la creacion de excel
+- buscar codigo muerto en java
 - plantillas
 
-# Iniciar APP
+# Iniciar APP (de forma rápida)
+
+En Windows 
+1. instalar python 3
+2. ejecutar init.bat 
+
+# Iniciar APP (paso a paso)
 
 1. Comprobar que tenemos python 3
 ```
@@ -74,6 +80,12 @@ y no el python del sistema
 VSCode -> View -> Command palette -> Python Select Interpreter 
 Ahora al imiciar un archivo con la extersion .py 
 en la esquina inferior derecha pondra el interprete de venv
+
+# Documentacion plantillas Ninja2
+
+https://jinja.palletsprojects.com/en/3.0.x/templates/
+https://realpython.com/primer-on-jinja-templating/
+
 
 # Ejemplo 1 de funcionalidad generador de plantillas para MyBatis 
 
